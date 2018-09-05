@@ -1,0 +1,6 @@
+include ':ListViewTest'
+include ':RecyclerViewTest'
+include ':UIBestPractice'
+include ':UICustomViews'
+include ':UILayoutTest'
+include ':UIWidgetTest'
