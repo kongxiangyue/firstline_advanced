@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BroadcastBestPractice/BroadcastBestPractice.iml" filepath="$PROJECT_DIR$/BroadcastBestPractice/BroadcastBestPractice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DatabaseTest/DatabaseTest.iml" filepath="$PROJECT_DIR$/DatabaseTest/DatabaseTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FilePersistenceTest/FilePersistenceTest.iml" filepath="$PROJECT_DIR$/FilePersistenceTest/FilePersistenceTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LitePalTest/LitePalTest.iml" filepath="$PROJECT_DIR$/LitePalTest/LitePalTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SharedPreferencesTest/SharedPreferencesTest.iml" filepath="$PROJECT_DIR$/SharedPreferencesTest/SharedPreferencesTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter06.iml" filepath="$PROJECT_DIR$/chapter06.iml" />
+    </modules>
+  </component>
+</project>
