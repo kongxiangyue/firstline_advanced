@@ -1,2 +1,3 @@
 include ':ActivityLifeCycleTest'
 include ':ActivityTest'
+include ':e2_2newActivity'
