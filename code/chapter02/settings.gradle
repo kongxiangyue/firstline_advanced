@@ -1,3 +1,5 @@
 include ':ActivityLifeCycleTest'
 include ':ActivityTest'
 include ':e2_2newActivity'
+include ':e2_3_1jumpActivity'
+include ':e2_3_2jumpActivity'
