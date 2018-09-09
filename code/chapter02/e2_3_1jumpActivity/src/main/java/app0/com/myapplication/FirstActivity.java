@@ -3,6 +3,7 @@ package app0.com.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -16,10 +17,21 @@ public class FirstActivity extends Activity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent("com.example.activitytest.ACTION_START");
+
+                Intent intent = new Intent(FirstActivity.this
+                        , SecondActivity.class);
                 startActivity(intent);
                 finish();
+
             }
         });
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.w("my_tag","onDestroy");
+    }
+
+
 }
