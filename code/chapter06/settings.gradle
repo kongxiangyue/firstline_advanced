@@ -1,4 +1,3 @@
-include ':BroadcastBestPractice'
 include ':DatabaseTest'
 include ':FilePersistenceTest'
 include ':LitePalTest'
