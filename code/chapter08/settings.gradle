@@ -1,1 +1,1 @@
-include ':CameraAlbumTest',':NotificationTest',':PlayAudioTest',':PlayVideoTest'
+include ':CameraAlbumTest',':NotificationTest',':PlayAudioTest',':PlayVideoTest',':CameraTest'
