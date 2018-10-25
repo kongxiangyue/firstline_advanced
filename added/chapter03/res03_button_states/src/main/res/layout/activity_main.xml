@@ -8,8 +8,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="app0.com.res03.MainActivity"
     android:orientation="vertical"
+    android:background="#000"
     >
-
 
     <Button
         android:text="我是普通图片背景"
