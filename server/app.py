@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 from xml.etree import ElementTree as ET
 from xml.etree.ElementTree import Element, SubElement, ElementTree
+import json
 
 app = Flask(__name__)
 
@@ -12,7 +13,7 @@ def hello_world():
 
 
 @app.route('/get_data.xml', methods=['GET', 'POST'])
-def get_data():
+def get_data_xml():
     apps = Element('apps')
 
     app     = SubElement(apps, 'app')
@@ -40,6 +41,32 @@ def get_data():
     version.text = '2.3'
 
     return ET.tostring(apps)
+
+
+@app.route('/get_data.json', methods=['GET', 'POST'])
+def get_data_json():
+    apps = []
+    app_0  = { 'id' : '5'
+        , 'version' : '5.5'
+        , 'name'    : 'Clash of Clans' }
+
+    app_1 = { 'id' : '6'
+        , 'version' : '7.0'
+        , 'name'    : 'Boom Beach' }
+
+    app_2 = {'id': '7'
+        , 'version': '3.5'
+        , 'name': 'Clash Royale'}
+
+
+    apps.append(app_0)
+    apps.append(app_1)
+    apps.append(app_2)
+
+
+    return json.dumps(apps)
+    pass
+
 
 if __name__ == '__main__':
     app.run(host = '0.0.0.0')
