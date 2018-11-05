@@ -1,2 +1,3 @@
 include ':javascript'
 include ':webviewlocal'
+include ':webview_browser'
