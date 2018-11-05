@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            //shouldoverrideurlloading返回true表明点击网页里面的链接
+            // 还是在当前的webview里跳转，不跳到浏览器那边。
             view.loadUrl(url);
             return true;
 
