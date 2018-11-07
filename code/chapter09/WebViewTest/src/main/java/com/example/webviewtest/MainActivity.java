@@ -11,9 +11,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         WebView webView = (WebView) findViewById(R.id.web_view);
+        //设置可以可以运行js代码
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
+
         webView.loadUrl("http://www.baidu.com");
     }
 

@@ -23,9 +23,11 @@ public class WebViewCall extends AppCompatActivity {
         ws.setJavaScriptEnabled(true);  //启动JavaScript
         ws.setDefaultTextEncodingName("UTF-8");  //定义字符集为"UTF-8"
         webView.loadUrl("file:///android_asset/call.html");  //加载html页面
+
         webView.addJavascriptInterface(this // JavaScript承载的类 by kong 2017/8/22
                 , "demo"); //html页面中的JavaScript
     }
+
     @JavascriptInterface       //一定要添加这个标签，才能将该方法暴露给javaScript
     public void call(final String phone) {
         //if (ActivityCompat.checkSelfPermission(this  //检测权限
