@@ -1,1 +1,1 @@
-include ':NetworkTest', ':WebViewTest', ':NetworkXML'
+include ':NetworkTest', ':WebViewTest', ':NetworkXML', ':NetworkJSON'
