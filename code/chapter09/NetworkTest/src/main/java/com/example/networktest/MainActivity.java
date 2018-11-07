@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.send_request) {
-//            sendRequestWithHttpURLConnection();
+            //sendRequestWithHttpURLConnection();
             sendRequestWithOkHttp();
         }
     }
@@ -102,15 +102,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
                             // 指定访问的服务器地址是电脑本机
-                            .url("http://10.0.2.2/get_data.json")
+                            .url("http://www.baidu.com")
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
-                    parseJSONWithGSON(responseData);
+//                    parseJSONWithGSON(responseData);
 //                    parseJSONWithJSONObject(responseData);
 //                    parseXMLWithSAX(responseData);
 //                    parseXMLWithPull(responseData);
-//                    showResponse(responseData);
+                    showResponse(responseData);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
