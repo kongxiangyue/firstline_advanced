@@ -65,9 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
 
-//                    parseXMLWithSAX(responseData);
-                    parseXMLWithPull(responseData);
-                    //showResponse(responseData);
+                    parseXMLWithSAX(responseData);
+//                    parseXMLWithPull(responseData);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -125,6 +124,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 responseText.setText(response);
             }
         });
+    }
+
+
+    private void parseXMLWithSAX(String xmlData) {
+        try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            XMLReader xmlReader = factory.newSAXParser().getXMLReader();
+            ContentHandler handler = new ContentHandler();
+            // 将ContentHandler的实例设置到XMLReader中
+            xmlReader.setContentHandler(handler);
+            // 开始执行解析
+            xmlReader.parse(new InputSource(new StringReader(xmlData)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
