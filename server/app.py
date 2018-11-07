@@ -3,6 +3,7 @@ from flask import request
 from xml.etree import ElementTree as ET
 from xml.etree.ElementTree import Element, SubElement, ElementTree
 import json
+import datetime
 
 app = Flask(__name__)
 
@@ -66,6 +67,37 @@ def get_data_json():
 
     return json.dumps(apps)
     pass
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+
+    username = request.args.get('username')
+    password = request.args.get('password')
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+    msg     = 'Login faileded'
+    logined = False
+    while True:
+        if None == username \
+                or None == password:
+            break
+
+        if 'admin' != username \
+                or '123456' != password:
+            break
+        msg     = 'Login succeeded!'
+        logined = True
+        break
+
+    ret = {'logined'  : logined
+        , 'loginName' : username
+        , 'loginTime' : datetime.datetime.now().strftime('%Y-%m-%d')
+        , 'msg'       : msg}
+
+    return json.dumps(ret)
 
 
 if __name__ == '__main__':
