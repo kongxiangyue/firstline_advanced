@@ -1,27 +1,40 @@
+#coding utf-8
+
 from flask import Flask
 from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Table,Column,Integer,String,MetaData,ForeignKey
+from sqlalchemy.orm import sessionmaker, relationship
 import os
 
 engine = create_engine('sqlite:///msg_board.db', echo=True)
-metadata = MetaData(engine)
+Base = declarative_base()
 
+class User(Base):
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    username = Column(String(64), nullable=False, index=True)
+    password = Column(String(64), nullable=False)
+    email = Column(String(64), nullable=False, index=True)
 
-user_table = Table('user', metadata,
-        Column('id', Integer, primary_key=True),
-        Column('name', String(50)),
-        Column('fullname', String(100))
-        )
+    def __repr__(self):
+        return '%s(%r)' % (self.__class__.__name__, self.username)
 
-address_table = Table('address', metadata,
-        Column('id', Integer, primary_key=True),
-        Column('user_id', None, ForeignKey('user.id')),
-        Column('email', String(128), nullable=False)
-        )
+Base.metadata.create_all(engine)
 
-metadata.create_all()
+Session = sessionmaker(bind=engine)
+session = Session()
+user = User()
+user.id = 1
+user.username = 'abc'
+user.password = 'abc'
+user.email = 'abc'
+
+session.add(user)
+session.commit()
 
 app = Flask(__name__)
+
 
 
 @app.before_first_request
