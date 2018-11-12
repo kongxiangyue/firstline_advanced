@@ -3,9 +3,10 @@
 from flask import Flask
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Table,Column,Integer,String,MetaData,ForeignKey
+from sqlalchemy import Table,Column,Integer,String,MetaData,ForeignKey,Text,TIMESTAMP
 from sqlalchemy.orm import sessionmaker, relationship
-import os
+import time
+
 
 engine = create_engine('sqlite:///msg_board.db', echo=True)
 Base = declarative_base()
@@ -20,6 +21,17 @@ class User(Base):
     def __repr__(self):
         return '%s(%r)' % (self.__class__.__name__, self.username)
 
+
+class Message(Base):
+    __tablename__ = 'messages'
+    id   = Column(Integer, primary_key=True)
+    title = Column(Text(""), nullable=False)
+    detail = Column(Text(""), nullable=False)
+    author = Column(String(64), nullable=False)
+    #time   = Column(TIMESTAMP(), nullable=False)
+    pass
+
+
 Base.metadata.create_all(engine)
 
 Session = sessionmaker(bind=engine)
@@ -30,7 +42,16 @@ user.username = 'abc'
 user.password = 'abc'
 user.email = 'abc'
 
-session.add(user)
+
+msg = Message()
+msg.id = 1
+#msg.time =
+msg.author = 'aa'
+msg.title = 'title'
+msg.detail = 'detail.....'
+
+#session.add(user)
+session.add(msg)
 session.commit()
 
 app = Flask(__name__)
