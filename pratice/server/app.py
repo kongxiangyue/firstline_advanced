@@ -68,8 +68,6 @@ def get_all_msg():
         pass
 
 
-
-
     return json.dumps(json_obj)
     pass
 
@@ -96,7 +94,6 @@ def add_msg():
 
     return 'success'
     pass
-
 
 
 
