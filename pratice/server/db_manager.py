@@ -103,5 +103,6 @@ class DBManager():
         return ret
         pass
 
-db_manager = DBManager()
 
+if __name__ == "__main__":
+    print '我在手动执行这个程序...'
