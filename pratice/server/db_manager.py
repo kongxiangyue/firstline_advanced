@@ -1,4 +1,4 @@
-#coding utf-8
+# -*- coding: utf-8 -*-
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column,Integer,String,Text,DateTime,desc
@@ -35,7 +35,7 @@ class DBManager():
         session = Session()
         #todo 这里取最大值的方法应该不是最好的方式
         query_res = session.query(Message).order_by(desc(Message.id)).all()
-        if query_res.len() != 0:
+        if len(query_res) != 0:
             id = query_res[0].id
         session.close()
         return id
@@ -89,7 +89,7 @@ class DBManager():
         ret = ''
 
         while True:
-            if 0 == rows.len:
+            if 0 == len(rows):
                 break
 
             json_obj = self.get_all_msg_json_obj(rows)
@@ -103,6 +103,7 @@ class DBManager():
         return ret
         pass
 
+db_manager = DBManager()
 
 if __name__ == "__main__":
     print '我在手动执行这个程序...'
