@@ -3,23 +3,15 @@
 from flask import Flask
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Table,Column,Integer,String,MetaData,ForeignKey,Text,TIMESTAMP
+from sqlalchemy import Table,Column,Integer,String,MetaData,ForeignKey,Text,DateTime
 from sqlalchemy.orm import sessionmaker, relationship
-import time
+from datetime import datetime
+import json
 
 
 engine = create_engine('sqlite:///msg_board.db', echo=True)
 Base = declarative_base()
 
-class User(Base):
-    __tablename__ = 'users'
-    id = Column(Integer, primary_key=True)
-    username = Column(String(64), nullable=False, index=True)
-    password = Column(String(64), nullable=False)
-    email = Column(String(64), nullable=False, index=True)
-
-    def __repr__(self):
-        return '%s(%r)' % (self.__class__.__name__, self.username)
 
 
 class Message(Base):
@@ -28,30 +20,27 @@ class Message(Base):
     title = Column(Text(""), nullable=False)
     detail = Column(Text(""), nullable=False)
     author = Column(String(64), nullable=False)
-    #time   = Column(TIMESTAMP(), nullable=False)
+    time   = Column(DateTime(), nullable=False)
     pass
 
+    @staticmethod
+    def get_stuct():
+        return ['id', 'title', 'detail', 'author', 'time']
 
 Base.metadata.create_all(engine)
 
 Session = sessionmaker(bind=engine)
 session = Session()
-user = User()
-user.id = 1
-user.username = 'abc'
-user.password = 'abc'
-user.email = 'abc'
 
-
-msg = Message()
-msg.id = 1
-#msg.time =
-msg.author = 'aa'
-msg.title = 'title'
-msg.detail = 'detail.....'
-
+#msg = Message()
+#msg.id = 1
+#msg.time = datetime.now()
+#msg.author = 'aa'
+#msg.title = 'title'
+#msg.detail = 'detail.....'
+#
 #session.add(user)
-session.add(msg)
+#session.add(msg)
 session.commit()
 
 app = Flask(__name__)
@@ -67,6 +56,23 @@ def before_first_request():
 @app.route('/')
 def hello_world():
     return 'Hello World!'
+
+@app.route('/get_all_msg')
+def get_all_msg():
+    rows = session.query(Message).all()
+
+    json_obj = []
+    for tmp in rows:
+        json_obj.append(dict(zip(Message.get_stuct()
+                            , [tmp.id, tmp.title, tmp.detail, tmp.author
+                                , tmp.time.strftime("%Y-%m-%d %H:%M:%S")])))
+        pass
+
+
+
+
+    return json.dumps(json_obj)
+    pass
 
 
 if __name__ == '__main__':
