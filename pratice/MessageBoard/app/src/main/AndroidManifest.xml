@@ -15,6 +15,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".DetailActivity" >
+            <intent-filter>
+                <action android:name="com.example.gupt.messageboard.detailacivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".AddmsgActivity" >
+            <intent-filter>
+                <action android:name="com.example.gupt.messageboard.addmsgactivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
     </application>
 
 </manifest>
