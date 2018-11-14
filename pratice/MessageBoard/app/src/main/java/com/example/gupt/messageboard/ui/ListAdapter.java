@@ -46,12 +46,23 @@ public class ListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (null == convertView) {
             convertView = layoutInflater.inflate(R.layout.list_item, null);
-            //convertView.set
-            //convertView.setClickable(true);
-            //TextView titleView = convertView.findViewById(R.id.item_title);
-            //TextView authorview = convertView.findViewById(R.id.item_);
-            //TextView titleView = convertView.findViewById(R.id.item_title);
 
+            TextView titleView  = (TextView) convertView.findViewById(R.id.item_title);
+            TextView authorview = (TextView) convertView.findViewById(R.id.item_author);
+            TextView timeview   = (TextView) convertView.findViewById(R.id.item_time);
+
+            Messege msg = msgs.get(position);
+            titleView.setText(msg.getTitle());
+            authorview.setText(msg.getAuthor());
+            timeview.setText(msg.getTime());
+            //convertView.setTag(0, (Object)msg);
+            //convertView.setClickable(true);
+            //convertView.setOnClickListener(new View.OnClickListener() {
+            //    @Override
+            //    public void onClick(View v) {
+            //        //// TODO: 2018/11/14 0014
+            //    }
+            //});
         }
         return convertView;
     }
