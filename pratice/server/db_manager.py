@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine,func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column,Integer,String,Text,DateTime,desc
 from sqlalchemy.orm import sessionmaker
@@ -102,7 +102,7 @@ class DBManager():
 
         return ret
         pass
-
+Base.metadata.create_all(engine)
 db_manager = DBManager()
 
 if __name__ == "__main__":
