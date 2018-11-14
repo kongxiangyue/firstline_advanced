@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="标题"
+        android:ems="10"
+        android:id="@+id/text_title" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="发表者"
+        android:ems="10"
+        android:layout_below="@id/text_title"
+        android:id="@+id/text_author" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="textPersonName"
+        android:text="留言内容"
+        android:ems="10"
+        android:layout_below="@id/text_author"
+        android:layout_above="@id/linearLayout"
+        android:id="@+id/text_detail" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:text="返回"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_back"
+            android:layout_weight="1" />
+    </LinearLayout>
+</RelativeLayout>

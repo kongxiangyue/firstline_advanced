@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="标题"
+        android:ems="10"
+        android:id="@+id/edit_title" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="发表者"
+        android:ems="10"
+        android:layout_below="@id/edit_title"
+        android:id="@+id/edit_author" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="textPersonName"
+        android:hint="留言内容"
+        android:ems="10"
+        android:layout_below="@id/edit_author"
+        android:layout_above="@id/linearLayout"
+        android:id="@+id/edit_detail" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="提交(get)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_submit_get"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="提交(post)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_submit_post"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="返回"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_back"
+            android:layout_weight="1" />
+    </LinearLayout>
+</RelativeLayout>
