@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gupt.messageboard.R;
 import com.example.gupt.messageboard.model.Messege;
@@ -55,14 +56,18 @@ public class ListAdapter extends BaseAdapter {
             titleView.setText(msg.getTitle());
             authorview.setText(msg.getAuthor());
             timeview.setText(msg.getTime());
-            //convertView.setTag(0, (Object)msg);
-            //convertView.setClickable(true);
-            //convertView.setOnClickListener(new View.OnClickListener() {
-            //    @Override
-            //    public void onClick(View v) {
-            //        //// TODO: 2018/11/14 0014
-            //    }
-            //});
+            convertView.setTag((Object)msg);
+            convertView.setClickable(true);
+            final View finalConvertView = convertView;
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Messege msg = (Messege) finalConvertView.getTag();
+                    Toast.makeText(context, Integer.toString(msg.getId())
+                            , Toast.LENGTH_SHORT).show();
+
+                }
+            });
         }
         return convertView;
     }
