@@ -1,5 +1,6 @@
 package com.example.gupt.messageboard;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     public  void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.btn_add_msg : break;
+            case R.id.btn_add_msg : jumpAddMsgActivity(); break;
             case R.id.btn_refresh : getAllMsgAndShow(); break;
             case R.id.btn_other : break;
             default: break;
@@ -107,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         });*/
     }
 
-    void handleAllMsgResponse(final String body_str) {
+    private void handleAllMsgResponse(final String body_str) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -120,6 +121,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void jumpAddMsgActivity() {
+        Intent i = new Intent("com.example.gupt.messageboard.addmsgactivity");
+        startActivity(i);
     }
 
 
