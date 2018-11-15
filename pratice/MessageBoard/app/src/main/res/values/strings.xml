@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">MessageBoard</string>
-    <string name="server_ip">172.16.33.191:5000</string>
-    <string name="http">http://</string>
-    <string name="get_all_msg">/get_all_msg</string>
     <string name="all_msg_error">获取留言列表错误</string>
 
 

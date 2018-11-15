@@ -10,6 +10,7 @@ import com.example.gupt.messageboard.model.Messege;
 import com.example.gupt.messageboard.network.HttpCallbackListener;
 import com.example.gupt.messageboard.network.HttpUtil;
 import com.example.gupt.messageboard.ui.ListAdapter;
+import com.example.gupt.messageboard.util.Util;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        getAllMsgAndShow();
 
     }
 
@@ -55,9 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getAllMsgAndShow() {
-        final String address = getResources().getString(R.string.http)
-                + getResources().getString(R.string.server_ip)
-                + getResources().getString(R.string.get_all_msg);
+        final String address = Util.http + Util.server_ip + Util.get_all_msg;
 
         new Thread(new Runnable() {
             @Override
