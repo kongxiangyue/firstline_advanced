@@ -25,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:inputType="textPersonName"
+        android:gravity="left|top"
         android:hint="留言内容"
         android:ems="10"
         android:layout_below="@id/edit_author"
