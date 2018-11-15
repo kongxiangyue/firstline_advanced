@@ -1,6 +1,7 @@
 package com.example.gupt.messageboard.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,9 +64,13 @@ public class ListAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Messege msg = (Messege) finalConvertView.getTag();
-                    Toast.makeText(context, Integer.toString(msg.getId())
-                            , Toast.LENGTH_SHORT).show();
-
+                    Intent i = new Intent("com.example.gupt.messageboard.detailacivity");
+                    i.putExtra("id", msg.getId());
+                    i.putExtra("title", msg.getTitle());
+                    i.putExtra("detail", msg.getDetail());
+                    i.putExtra("author", msg.getAuthor());
+                    i.putExtra("time", msg.getTime());
+                    context.startActivity(i);
                 }
             });
         }
