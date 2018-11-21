@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
+    private EditText edit_server_ip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,13 +50,17 @@ public class MainActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.btn_add_msg : jumpAddMsgActivity(); break;
             case R.id.btn_refresh : getAllMsgAndShow(); break;
-            case R.id.btn_other : break;
+            case R.id.btn_other   : break;
+            case R.id.btn_setting_ip :
+                Util.server_ip = edit_server_ip.getText().toString();
+                break;
             default: break;
         }
     }
 
     private void bindUI() {
-        listView = (ListView) findViewById(R.id.listview);
+        listView       = (ListView) findViewById(R.id.listview);
+        edit_server_ip = (EditText) findViewById(R.id.edit_serverip);
     }
 
     private void getAllMsgAndShow() {
