@@ -25,7 +25,7 @@ public class WebViewCall extends AppCompatActivity {
         webView.loadUrl("file:///android_asset/call.html");  //加载html页面
 
         webView.addJavascriptInterface(this // JavaScript承载的类 by kong 2017/8/22
-                , "demo"); //html页面中的JavaScript
+                , "demo"); //html页面中的JavaScript的对象
     }
 
     @JavascriptInterface       //一定要添加这个标签，才能将该方法暴露给javaScript
