@@ -13,7 +13,7 @@ def before_first_request():
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return('Hello World!')
 
 @app.route('/get_all_msg')
 def get_all_msg():

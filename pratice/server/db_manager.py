@@ -7,7 +7,7 @@ from datetime import datetime
 import json
 
 
-engine = create_engine('sqlite:///msg_board.db', echo=True)
+engine = create_engine('sqlite:///msg_board.db', echo=False)
 Base   = declarative_base()
 Session = sessionmaker(bind=engine)
 
@@ -106,4 +106,4 @@ Base.metadata.create_all(engine)
 db_manager = DBManager()
 
 if __name__ == "__main__":
-    print '我在手动执行这个程序...'
+    print('我在手动执行这个程序...')
