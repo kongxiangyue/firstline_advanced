@@ -2,14 +2,34 @@
 <html>
 <head>
 <meta charset="utf-8"> 
-<title>菜鸟教程(runoob.com)</title> 
+<title>留言板</title> 
 <script src="jquery/jquery-3.3.1.min.js">
 </script>
 <script>
 $(document).ready(function(){
   $("button").click(function(){
     $.get("/get_all_msg", function(data,status){
-        alert(data);
+        var json_data = JSON.parse(data);
+        for(i in json_data)  {
+          
+          
+          console.log(json_data[i].title);
+          td_id = $("<td><\td>").text(json_data[i].id);
+          td_title = $("<td><\td>").text(json_data[i].title);
+          td_detail = $("<td><\td>").text(json_data[i].detail);
+          td_author = $("<td><\td>").text(json_data[i].author);
+          td_time   = $("<td><\td>").text(json_data[i].time);
+          var my_tr = $("<tr><\tr>")
+            .append(td_id)
+            .append(td_title)
+            .append(td_detail)
+            .append(td_author)
+            .append(td_time);
+
+
+          $("#my_borad").append(my_tr);
+          
+        }
 });
 });
 });
@@ -17,9 +37,11 @@ $(document).ready(function(){
 </head>
 
 <body>
-<h2>这是一个标题</h2>
-<p>这是一个段落。</p>
-<p>这是另一个段落。</p>
-<button>点我</button>
+  <table id="my_borad" border="2">
+    
+  </table>
+  <button>获取</button>
+
+
 </body>
 </html>
