@@ -7,12 +7,13 @@
 </script>
 <script>
 $(document).ready(function(){
-  $("button").click(function(){
+  $("#get_btn").click(function(){
     $.get("/get_all_msg", function(data,status){
         var json_data = JSON.parse(data);
+        // 清空一下
+        $("#my_borad").empty();
+
         for(i in json_data)  {
-          
-          
           console.log(json_data[i].title);
           td_id = $("<td><\td>").text(json_data[i].id);
           td_title = $("<td><\td>").text(json_data[i].title);
@@ -25,13 +26,28 @@ $(document).ready(function(){
             .append(td_detail)
             .append(td_author)
             .append(td_time);
-
-
           $("#my_borad").append(my_tr);
-          
         }
 });
 });
+
+$("#sent_btn").click(function() {
+  var title =  "中文标题2";
+  var author = "中文作者2";
+  var detail = "中文内容2";
+  $.get("/add_msg" + "?title="  + title 
+                   + "&author=" + author
+                   + "&detail=" + detail
+          , function(data, status) {
+            alert(data);
+
+          } );
+  
+
+
+});
+
+
 });
 </script>
 </head>
@@ -40,7 +56,9 @@ $(document).ready(function(){
   <table id="my_borad" border="2">
     
   </table>
-  <button>获取</button>
+  <button id="get_btn">获取</button>
+  <button id="sent_btn">发送</button>
+
 
 
 </body>
