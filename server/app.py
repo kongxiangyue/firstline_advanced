@@ -100,5 +100,18 @@ def login():
     return json.dumps(ret)
 
 
+@app.route('/test_for_post', methods=['GET', 'POST'])
+def test_for_post(): 
+    name = request.args.get('name')
+    url = request.args.get('url')
+    if request.method == 'POST':
+        name = request.form['name']
+        url = request.form['url']
+
+    return_str = "你的输入:" + name + "==" + url;
+    
+    return return_str
+
+
 if __name__ == '__main__':
     app.run(host = '0.0.0.0')
