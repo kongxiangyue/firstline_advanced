@@ -25,12 +25,14 @@ def add_msg():
     detail = request.args.get('detail')
     title  = request.args.get('title')
     author = request.args.get('author')
+    avatar = request.args.get('avatar')
     if 'POST' == request.method:
         detail = request.form['detail']
         title  = request.form['title']
         author = request.form['author']
+        avatar = request.form['avatar']
     ret = "failed"
-    if True == db_manager.add_msg(title, author, detail):
+    if True == db_manager.add_msg(title, author, detail, avatar):
         ret = 'success'
 
     return ret

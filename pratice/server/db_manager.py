@@ -17,12 +17,13 @@ class Message(Base):
     title  = Column(Text(""), nullable=False)
     detail = Column(Text(""), nullable=False)
     author = Column(String(64), nullable=False)
+    avatar = Column(Text(""), nullable=True)
     time   = Column(DateTime(), nullable=False)
     pass
 
     @staticmethod
     def get_stuct():
-        return ['id', 'title', 'detail', 'author', 'time']
+        return ['id', 'title', 'detail', 'author', 'time', 'avatar']
 
 class DBManager():
 
@@ -41,13 +42,13 @@ class DBManager():
         return id
         pass
 
-    def add_msg(self, title, author, detail):
+    def add_msg(self, title, author, detail, avatar):
         ret = False
         while True:
 
             if None == title \
                 or None == author \
-                or None == detail:
+                or None == detail:#avatar可以为空
                 break
 
             new_id = 1 + self.get_max_id()
@@ -58,6 +59,7 @@ class DBManager():
             msg.author = author
             msg.title  = title
             msg.detail = detail
+            msg.avatar = avatar
 
             session = Session()
             session.add(msg)
@@ -77,7 +79,8 @@ class DBManager():
         for tmp in list:#todo 这里太耦合，应想个办法改掉
             json_obj.append(dict(zip(Message.get_stuct()
                     , [tmp.id, tmp.title, tmp.detail, tmp.author
-                        , tmp.time.strftime("%Y-%m-%d %H:%M:%S")])))
+                        , tmp.time.strftime("%Y-%m-%d %H:%M:%S")
+                        , tmp.avatar])))
         pass
         return json_obj
 
