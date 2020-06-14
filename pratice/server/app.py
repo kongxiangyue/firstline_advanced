@@ -2,6 +2,7 @@
 
 from flask import Flask,request
 from db_manager import db_manager
+import json
 
 app = Flask(__name__)
 
@@ -38,6 +39,35 @@ def add_msg():
     return ret
     pass
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    res = {}
+    res["login"] = False
+    res["error_code"] = 1
+    res["msg"]   = "username not exit"
+    username = request.args.get('username')
+    password  = request.args.get('password')
+    if 'POST' == request.method:
+        username  = request.form('username')
+        password  = request.form('password')
+    
+    info = db_manager.get_user_info(username)
+
+    if info["username"] == None :
+        res["error_code"] = 1
+        res["msg"]   = "username not exit"
+    
+    if password != info['password'] :
+        res["error_code"] = 2
+        res["msg"]   = "wrong password"
+    
+    if password == info['password'] and username == info["username"] :
+        res["error_code"] = 0
+        res["msg"]   = "success"
+
+    return json.dumps(res)
+
+    pass
 
 
 if __name__ == '__main__':

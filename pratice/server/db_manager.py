@@ -25,6 +25,14 @@ class Message(Base):
     def get_stuct():
         return ['id', 'title', 'detail', 'author', 'time', 'avatar']
 
+class User(Base):
+    __tablename__ = 'user'
+    id     = Column(Integer, primary_key=True)
+    user   = Column(Text(""), nullable=False)
+    password = Column(Text(""), nullable=False)
+    pass
+
+
 class DBManager():
 
     def __name___(self):
@@ -71,7 +79,18 @@ class DBManager():
             pass
 
         return ret
-        pass
+
+    def get_user_info(self, username):
+        res = {}
+        session = Session()
+        query_res = session.query(User).filter(User.user==username).all()
+        session.close()
+        if len(query_res) != 0:
+            res["username"] = query_res[0].user
+            res["password"] = query_res[0].password
+            return res
+        return res
+
 
 
     def get_all_msg_json_obj(self, list):
