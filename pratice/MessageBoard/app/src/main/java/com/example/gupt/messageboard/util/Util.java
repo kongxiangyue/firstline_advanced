@@ -9,4 +9,6 @@ public class Util {
     static public final String http = "http://";
     static public final String get_all_msg = "/get_all_msg";
     static public final String add_msg = "/add_msg";
+    static public final String login = "/login";
+
 }

@@ -10,21 +10,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.gupt.messageboard.MainActivity">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="请输入服务器IP"
-        android:ems="10"
-        android:id="@+id/edit_serverip"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listview"
-        android:layout_below="@id/edit_serverip"
         android:layout_above="@+id/linearLayout" />
 
     <LinearLayout
@@ -62,13 +53,5 @@
             android:layout_weight="1" />
     </LinearLayout>
 
-    <Button
-        android:text="设置"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_setting_ip"
-        android:layout_above="@+id/listview"
-        android:onClick="onClick"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

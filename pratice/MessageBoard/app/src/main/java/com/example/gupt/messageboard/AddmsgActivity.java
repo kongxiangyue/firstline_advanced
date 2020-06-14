@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.gupt.messageboard.global.UserInfo;
 import com.example.gupt.messageboard.model.Messege;
 import com.example.gupt.messageboard.util.Util;
 
@@ -30,6 +31,7 @@ public class AddmsgActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addmsg_activity);
         bindUI();
+        edit_author.setText(UserInfo.getInstance().getUsername());
     }
 
     private void bindUI() {

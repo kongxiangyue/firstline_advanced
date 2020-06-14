@@ -28,7 +28,6 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
-    private EditText edit_server_ip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,16 +50,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_add_msg : jumpAddMsgActivity(); break;
             case R.id.btn_refresh : getAllMsgAndShow(); break;
             case R.id.btn_other   : break;
-            case R.id.btn_setting_ip :
-                Util.server_ip = edit_server_ip.getText().toString();
-                break;
+
             default: break;
         }
     }
 
     private void bindUI() {
         listView       = (ListView) findViewById(R.id.listview);
-        edit_server_ip = (EditText) findViewById(R.id.edit_serverip);
     }
 
     private void getAllMsgAndShow() {
