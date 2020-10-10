@@ -62,6 +62,7 @@ def login():
         res["msg"]   = "wrong password"
     
     if password == info['password'] and username == info["username"] :
+        res["login"] = False
         res["error_code"] = 0
         res["msg"]   = "success"
 
